@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="title-container">
+		<div class="title"> My Wordle </div>
+		<div class="subtitle">
+			Educational purpose only. Play the original Wordle game
+			<a href="https://www.powerlanguage.co.uk/wordle/" target="_blank">here</a>
+		</div>
+
+	</div>
+
+	<div class="main">
+		<div class="try-container" *ngFor="let try of tries" #tryContainer>
+			<div class="letter-container" *ngFor="let letter of try.letters"
+			    [class.match]="letter.state === LetterState.FULL_MATCH"
+			    [class.partial]="letter.state === LetterState.PARTIAL_MATCH"
+			    [class.wrong]="letter.state === LetterState.WRONG"
+			    [class.has-text]="letter.text !== ''">
+				{{letter.text}}
+			</div>
+		</div>
+	</div>
+
+	<div class="keyboard-container">
+		<div [class]="['row' + i, 'row'].join(' ')"
+		    *ngFor="let row of keyboardRows; let i = index">
+			<div *ngFor="let key of row" [class]="getKeyClass(key)"
+			    [class.enter]="key === 'Enter'"
+					(click)="handleClickKey(key)">
+				<div *ngIf="key !== 'Backspace'; else backspace">
+				  {{key}}
+				</div>
+				<ng-template #backspace>
+					<img src="../assets/backspace.svg"/>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+
+	<div class="info-msg"
+	    [class.show]="infoMsg !== ''"
+	    [class.fade-out]="fadeOutInfoMessage">
+		{{infoMsg}}
+	</div>
+
+	<div class="share-dialog-container" [class.show]="showShareDialogContainer">
+		<div class="share-dialog" [class.show]="showShareDialog">
+			<button (click)="handleClickShare()">Share</button>
+		</div>
+	</div>
+</div>

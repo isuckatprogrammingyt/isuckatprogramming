@@ -1,0 +1,271 @@
+.container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
+	.title-container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 1px solid #ddd;
+		padding: 8px 0;
+	}
+
+	.title {
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 24px;
+	}
+
+	.subtitle {
+		font-size: 12px;
+		color: #999;
+		margin-top: 4px;
+	}
+
+	.main {
+		flex-grow: 1;
+		margin-top: 12px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		.try-container {
+			display: flex;
+			margin-bottom: 4px;
+
+			&.shake {
+				animation-name: shake;
+				animation-duration: 500ms;
+			}
+
+			.letter-container {
+				width: 64px;
+				height: 64px;
+				border: 2px solid #ddd;
+				box-sizing: border-box;
+				margin: 0 2px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 32px;
+				font-weight: bold;
+				text-transform: uppercase;
+				transition: transform 180ms;
+
+				&.has-text {
+					border-color: #888;
+					animation-name: letter-pop;
+					animation-duration: 120ms;
+				}
+
+				// Got those colors from the wordle game.
+				&.match {
+					background-color: #6aaa64;
+					border-color: #6aaa64;
+					color: white;
+				}
+
+				&.partial {
+					background-color: #c9b458;
+					border-color: #c9b458;
+					color: white;
+				}
+
+				&.wrong {
+					background-color: #86888a;
+					border-color: #86888a;
+					color: white;
+				}
+
+				&.fold {
+					transform: scaleY(0);
+				}
+
+				&.bounce {
+					animation-name: bounce;
+					animation-duration: 1s;
+				}
+			}
+		}
+	}
+
+	.keyboard-container {
+		margin-bottom: 12px;
+
+		.row {
+			display: flex;
+			align-items: center;
+			margin-top: 6px;
+
+			&.row1 {
+				margin-left: 23px;
+			}
+		}
+
+		.key {
+			height: 58px;
+			min-width: 42px;
+			margin-right: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			border-radius: 4px;
+			background-color: #d3d6da;
+			font-size: 13px;
+			font-weight: bold;
+			user-select: none;
+
+			&.enter {
+				padding: 0 11px;
+				text-transform: uppercase;
+			}
+
+			&.match {
+				background-color: #6aaa64;
+				color: white;
+			}
+
+			&.partial {
+				background-color: #c9b458;
+				color: white;
+			}
+
+			&.wrong {
+				background-color: #86888a;
+				color: white;
+			}
+
+			&:hover {
+				background-color: #bbb;
+			}
+		}
+	}
+
+	.info-msg {
+		position: absolute;
+		top: 82px;
+		padding: 16px 24px;
+		background-color: black;
+		color: white;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: bold;
+		opacity: 0;
+
+		&.show {
+			opacity: 1;
+		}
+
+		&.fade-out {
+			opacity: 0;
+			transition: opacity 500ms;
+		}
+	}
+
+	.share-dialog-container {
+		background-color: rgba(255, 255, 255, .5);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		visibility: hidden;
+		display: flex;
+
+		&.show {
+			visibility: visible;
+		}
+
+		.share-dialog {
+			position: absolute;
+			width: 300px;
+			height: 300px;
+			background-color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 8px;
+			box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.2), 0 4px 10px -6px rgb(0 0 0 / 0.1);
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 300ms ease-out;
+
+			button {
+				background-color: #6aaa64;
+				color: white;
+				font-weight: bold;
+				font-size: 18px;
+				padding: 12px 24px;
+				border-radius: 4px;
+				border: none;
+				cursor: pointer;
+			}
+
+			&.show {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
+}
+
+// Animation for entering a letter.
+@keyframes letter-pop {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.15); }
+	100% { transform: scale(1); }
+}
+
+
+// Stole from wordle css.
+@keyframes shake {
+	10%,
+	90% {
+	  	transform: translateX(-1px);
+	}
+
+	20%,
+	80% {
+		transform: translateX(2px);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translateX(-4px);
+	}
+
+	40%,
+	60% {
+		transform: translateX(4px);
+	}
+}
+
+// Again, got this from wordle css:)
+@keyframes bounce {
+	0%, 20% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-30px);
+	}
+	50% {
+		transform: translateY(5px);
+	}
+	60% {
+		transform: translateY(-15px);
+	}
+	80% {
+		transform: translateY(2px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}

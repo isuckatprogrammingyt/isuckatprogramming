@@ -6,6 +6,8 @@ Use [teachable machine](https://teachablemachine.withgoogle.com/),
 to build a react-native app that can detect whether what you are looking at
 is a hot dog, or not a hot dog.
 
+Dataset downloaded from https://www.kaggle.com/dansbecker/hot-dog-not-hot-dog.
+
 Inspired by [Mr. Jian-Yang](https://www.youtube.com/watch?v=AJsOA4Zl6Io)
 (not Mr. Jian, and not Mr. Yang) from Silicon Valley.
 

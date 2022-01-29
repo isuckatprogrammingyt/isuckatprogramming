@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "not-hot-dog",
+    "slug": "not-hot-dog",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "not-hot-dog"
+}

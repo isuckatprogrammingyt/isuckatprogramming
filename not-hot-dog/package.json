@@ -1,0 +1,32 @@
+{
+  "name": "not-hot-dog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+		"@tensorflow/tfjs": "^3.13.0",
+		"@tensorflow/tfjs-react-native": "^0.8.0",
+		"@react-native-async-storage/async-storage": "1.15.7",
+    "expo": "~44.0.2",
+    "expo-splash-screen": "~0.14.1",
+    "expo-status-bar": "~1.2.0",
+		"expo-camera": "^12.1.0",
+		"expo-file-system": "^13.2.0",
+		"expo-gl": "^11.1.1",
+		"expo-gl-cpp": "^11.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+		"react-native-fs": "2.14.1",
+    "react-native-web": "0.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "private": true
+}
